@@ -47,7 +47,10 @@ function handleOperator(e) {
 
 function displayResult() {
   const result = operate(previousNum, currentNum, operator);
-  console.log(result);
+  subDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
+  previousNum = result.toString();
+  currentNum = '';
+  mainDisplay.textContent = previousNum;
 }
 
 function clearDisplay() {
