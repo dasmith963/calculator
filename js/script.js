@@ -2,6 +2,7 @@ const mainDisplay = document.querySelector('.main-display');
 const subDisplay = document.querySelector('.sub-display');
 const operatorBtns = document.querySelectorAll('.operator');
 const numberBtns = document.querySelectorAll('.number');
+const equalsBtn = document.querySelector('.equals');
 const clearBtn = document.querySelector('.clear');
 let previousNum = '';
 let currentNum = '';
@@ -9,6 +10,7 @@ let operator = '';
 
 operatorBtns.forEach(button => button.addEventListener('click', handleOperator));
 numberBtns.forEach(button => button.addEventListener('click', appendNumber));
+equalsBtn.addEventListener('click', displayResult);
 clearBtn.addEventListener('click', clearDisplay);
 
 const operations = {
@@ -19,10 +21,12 @@ const operations = {
 }
 
 function operate(num1, num2, operator) {
-  if (operator === '+') return operations.add(num1, num2);
-  if (operator === '-') return operations.subtract(num1, num2);
-  if (operator === 'x') return operations.multiply(num1, num2);
-  if (operator === '÷') return operations.divide(num1, num2);
+  a = parseFloat(num1);
+  b = parseFloat(num2);
+  if (operator === '+') return operations.add(a, b);
+  if (operator === '-') return operations.subtract(a, b);
+  if (operator === 'x') return operations.multiply(a, b);
+  if (operator === '÷') return operations.divide(a, b);
 }
 
 function appendNumber(e) {
@@ -39,6 +43,11 @@ function handleOperator(e) {
   }
   operator = e.target.textContent;
   subDisplay.textContent = `${previousNum} ${operator}`;
+}
+
+function displayResult() {
+  result = operate(previousNum, currentNum, operator);
+  console.log(result);
 }
 
 function clearDisplay() {
