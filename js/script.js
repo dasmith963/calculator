@@ -46,11 +46,14 @@ function handleOperator(e) {
 }
 
 function displayResult() {
-  result = operate(previousNum, currentNum, operator);
+  const result = operate(previousNum, currentNum, operator);
   console.log(result);
 }
 
 function clearDisplay() {
   currentNum = '';
+  previousNum = '';
+  operator = '';
   mainDisplay.textContent = '0';
+  subDisplay.textContent = '';
 }
