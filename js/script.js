@@ -2,6 +2,7 @@ const mainDisplay = document.querySelector('.main-display');
 const subDisplay = document.querySelector('.sub-display');
 const operatorBtns = document.querySelectorAll('.operator');
 const numberBtns = document.querySelectorAll('.number');
+const decimalBtn = document.querySelector('.decimal');
 const equalsBtn = document.querySelector('.equals');
 const clearBtn = document.querySelector('.clear');
 let previousNum = '';
@@ -10,6 +11,7 @@ let operator = '';
 
 operatorBtns.forEach(button => button.addEventListener('click', handleOperator));
 numberBtns.forEach(button => button.addEventListener('click', appendNumber));
+decimalBtn.addEventListener('click', appendDecimal);
 equalsBtn.addEventListener('click', checkNumbers);
 clearBtn.addEventListener('click', clearDisplay);
 
@@ -37,6 +39,13 @@ function appendNumber(e) {
   mainDisplay.textContent = currentNum;
 }
 
+function appendDecimal() {
+  if (currentNum === '') currentNum = '0';
+  if (currentNum.includes('.')) return;
+  currentNum += '.';
+  mainDisplay.textContent = currentNum;
+}
+
 function handleOperator(e) {
   if (previousNum === '') {
     previousNum = currentNum;
@@ -46,7 +55,7 @@ function handleOperator(e) {
   subDisplay.textContent = `${previousNum} ${operator}`;
 }
 
-function checkNumbers(){
+function checkNumbers() {
   if (currentNum !== '' && previousNum !== '') displayResult();
 }
 
