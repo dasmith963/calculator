@@ -59,10 +59,14 @@ function checkNumbers() {
   if (currentNum !== '' && previousNum !== '') displayResult();
 }
 
+function roundNumber(number){
+  return Math.round(number * 100000) / 100000;
+}
+
 function displayResult() {
   const result = operate(previousNum, currentNum, operator);
   subDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
-  previousNum = result.toString();
+  previousNum = roundNumber(result).toString();
   currentNum = '';
   mainDisplay.textContent = previousNum;
 }
