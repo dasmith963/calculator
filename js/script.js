@@ -10,7 +10,7 @@ let operator = '';
 
 operatorBtns.forEach(button => button.addEventListener('click', handleOperator));
 numberBtns.forEach(button => button.addEventListener('click', appendNumber));
-equalsBtn.addEventListener('click', displayResult);
+equalsBtn.addEventListener('click', checkNumbers);
 clearBtn.addEventListener('click', clearDisplay);
 
 const operations = {
@@ -44,6 +44,10 @@ function handleOperator(e) {
   }
   operator = e.target.textContent;
   subDisplay.textContent = `${previousNum} ${operator}`;
+}
+
+function checkNumbers(){
+  if (currentNum !== '' && previousNum !== '') displayResult();
 }
 
 function displayResult() {
