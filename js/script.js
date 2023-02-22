@@ -4,6 +4,7 @@ const operatorBtns = document.querySelectorAll('.operator');
 const numberBtns = document.querySelectorAll('.number');
 const decimalBtn = document.querySelector('.decimal');
 const equalsBtn = document.querySelector('.equals');
+const deleteBtn = document.querySelector('.backspace');
 const clearBtn = document.querySelector('.clear');
 let previousNum = '';
 let currentNum = '';
@@ -13,6 +14,7 @@ operatorBtns.forEach(button => button.addEventListener('click', handleOperator))
 numberBtns.forEach(button => button.addEventListener('click', appendNumber));
 decimalBtn.addEventListener('click', appendDecimal);
 equalsBtn.addEventListener('click', checkNumbers);
+deleteBtn.addEventListener('click', deleteInput);
 clearBtn.addEventListener('click', clearDisplay);
 
 const operations = {
@@ -59,7 +61,7 @@ function checkNumbers() {
   if (currentNum !== '' && previousNum !== '') displayResult();
 }
 
-function roundNumber(number){
+function roundNumber(number) {
   return Math.round(number * 100000) / 100000;
 }
 
@@ -69,6 +71,14 @@ function displayResult() {
   previousNum = roundNumber(result).toString();
   currentNum = '';
   mainDisplay.textContent = previousNum;
+}
+
+function deleteInput() {
+  if (currentNum !== '') {
+    currentNum = currentNum.substring(0, currentNum.length - 1);
+    mainDisplay.textContent = currentNum;
+  }
+  if (currentNum === '') mainDisplay.textContent = '0';
 }
 
 function clearDisplay() {
