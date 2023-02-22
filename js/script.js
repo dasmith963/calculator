@@ -3,6 +3,7 @@ const subDisplay = document.querySelector('.sub-display');
 const operatorBtns = document.querySelectorAll('.operator');
 const numberBtns = document.querySelectorAll('.number');
 const decimalBtn = document.querySelector('.decimal');
+const percentBtn = document.querySelector('.percent');
 const equalsBtn = document.querySelector('.equals');
 const deleteBtn = document.querySelector('.backspace');
 const clearBtn = document.querySelector('.clear');
@@ -13,6 +14,7 @@ let operator = '';
 operatorBtns.forEach(button => button.addEventListener('click', handleOperator));
 numberBtns.forEach(button => button.addEventListener('click', appendNumber));
 decimalBtn.addEventListener('click', appendDecimal);
+percentBtn.addEventListener('click', getPercentage);
 equalsBtn.addEventListener('click', checkNumbers);
 deleteBtn.addEventListener('click', deleteInput);
 clearBtn.addEventListener('click', clearDisplay);
@@ -46,6 +48,14 @@ function appendDecimal() {
   if (currentNum.includes('.')) return;
   currentNum += '.';
   mainDisplay.textContent = currentNum;
+}
+
+function getPercentage() {
+  if (currentNum !== '') {
+    currentNum = (parseFloat(currentNum) / 100).toFixed(3);
+    console.log(currentNum);
+    mainDisplay.textContent = currentNum.toString();
+  }
 }
 
 function handleOperator(e) {
