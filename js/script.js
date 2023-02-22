@@ -53,7 +53,6 @@ function appendDecimal() {
 function getPercentage() {
   if (currentNum !== '') {
     currentNum = (parseFloat(currentNum) / 100).toFixed(3);
-    console.log(currentNum);
     mainDisplay.textContent = currentNum.toString();
   }
 }
@@ -72,6 +71,7 @@ function checkNumbers() {
 }
 
 function roundNumber(number) {
+  if (isNaN(number))return 'Error';
   return Math.round(number * 100000) / 100000;
 }
 
@@ -98,25 +98,3 @@ function clearDisplay() {
   mainDisplay.textContent = '0';
   subDisplay.textContent = '';
 }
-
-// * Users should be able to string together several operations and get the right answer, with each pair of numbers being evaluated at a time. For example, 12 + 7 - 5 * 3 = should yield 42.
-// * Your calculator should not evaluate more than a single pair of numbers at a time. 
-//    Example: you press a number button (12), 
-//    followed by an operator button (+), 
-//    a second number button (7), and 
-//    finally a second operator button (-). 
-
-// Your calculator should do the following: 
-    // first, evaluate the first pair of numbers (12 + 7),
-    // second, display the result of that calculation (19),
-    // finally, use that result (19) as the first number in your new calculation, along with the next operator (-).
-
-// * Display a snarky error message if the user tries to divide by 0… and don’t let it crash your calculator!
-
-// Inverse button
-
-// numbers with commas
-
-// Check delete input function after check operator function. 
-
-// * Add keyboard support! You might run into an issue where keys such as (/) might cause you some trouble. Read the MDN documentation for event.preventDefault to help solve this problem.
