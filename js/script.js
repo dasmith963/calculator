@@ -23,6 +23,7 @@ const operations = {
 function operate(num1, num2, operator) {
   a = parseFloat(num1);
   b = parseFloat(num2);
+  if (isNaN(a) || isNaN(b)) return;
   if (operator === '+') return operations.add(a, b);
   if (operator === '-') return operations.subtract(a, b);
   if (operator === 'x') return operations.multiply(a, b);
