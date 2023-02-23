@@ -57,17 +57,20 @@ function getPercentage() {
   }
 }
 
+function checkNumbers() {
+  if (previousNum === 'Error') return;
+  if (currentNum !== '' && previousNum !== '') displayResult();
+}
+
 function handleOperator(e) {
   if (previousNum === '') {
     previousNum = currentNum;
     currentNum = '';
+  } else if (operator){
+   checkNumbers();
   }
   operator = e.target.textContent;
   subDisplay.textContent = `${previousNum} ${operator}`;
-}
-
-function checkNumbers() {
-  if (currentNum !== '' && previousNum !== '') displayResult();
 }
 
 function roundNumber(number) {
