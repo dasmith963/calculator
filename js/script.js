@@ -13,9 +13,11 @@ let currentNum = '';
 let operator = '';
 
 operatorBtns.forEach(button => button.addEventListener('click', handleOperator));
-numberBtns.forEach(button => button.addEventListener('click', appendNumber));
+numberBtns.forEach(button => button.addEventListener('click',(e)=>{
+  appendNumber(e.target.textContent)
+}));
 decimalBtn.addEventListener('click', appendDecimal);
-inverseBtn.addEventListener('click', invertSign);
+inverseBtn.addEventListener('click', invertNumber);
 percentBtn.addEventListener('click', getPercentage);
 equalsBtn.addEventListener('click', checkNumbers);
 deleteBtn.addEventListener('click', deleteInput);
@@ -38,10 +40,10 @@ function operate(num1, num2, operator) {
   if (operator === '÷') return operations.divide(a, b);
 }
 
-function appendNumber(e) {
+function appendNumber(number) {
   currentNum === '0'
-    ? currentNum = e.target.textContent
-    : currentNum += e.target.textContent;
+    ? currentNum = number
+    : currentNum += number;
   mainDisplay.textContent = currentNum;
 }
 
@@ -89,7 +91,7 @@ function roundNumber(number) {
 
 function displayResult() {
   const result = operate(previousNum, currentNum, operator);
-  subDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
+  subDisplay.textContent = `${previousNum} ${operator} ${currentNum} =`;
   previousNum = roundNumber(result).toString();
   currentNum = '';
   mainDisplay.textContent = previousNum;
@@ -110,3 +112,50 @@ function clearDisplay() {
   mainDisplay.textContent = '0';
   subDisplay.textContent = '';
 }
+
+// * Add keyboard support! You might run into an issue where keys such as (/) might cause you some trouble. 
+// Read the MDN documentation for event.preventDefault to help solve this problem
+  // 0-9
+  // + - * /
+  // %
+  // .
+  // 'enter' || = 
+  // 'backspace'
+document.addEventListener('keydown', (event)=>{
+  let key = event.key
+ 
+  if (key >= 0 && key <= 9){
+    appendNumber(key);
+    console.log(`this is number: ${key}`)
+  }
+
+  if (key === '+' || key === '-'|| key === '*' || key === '/'){
+    console.log(`this is operator: ${key}`)
+  }
+
+  if (key === '%'){
+    console.log(`this is percent: ${key}`)
+  }
+
+  if(key === '.'){
+    console.log(`this is decimal: ${key}`)
+  }
+
+  if (key === 'Enter' || key === '='){
+    console.log(`this is equals: ${key}`)
+  }
+
+  if (key === 'c'){
+    console.log(`this is clear: ${key}`)
+  }
+
+  if(key === 'Backspace'){
+    console.log(`this is backspace: ${key}`)
+  }
+
+  if (key === 'p'){
+    console.log(`this is inverse: ${key}`)
+  }
+})
+
+  // numbers with commas
