@@ -49,6 +49,7 @@ body {
 button{
   background: #f2f2f2;
   font-size: 1.5rem;
+  border: 1px solid #ddd;
 }
 
 button:hover{
@@ -57,4 +58,29 @@ button:hover{
 
 button:active{
   transform: translateY(.8px);
+}
+
+.clear,
+.backspace{
+ color: #f64859;
+}
+
+.operator{
+  background: #bcbebe;
+}
+
+.operator:active,
+.operator:focus{
+  background: #e9770d;
+  border: 1px solid #ddd;
+  color: #fff;
+}
+
+.equals{
+  background: #4285f4;
+  color: #fff;
+}
+
+.equals:hover{
+  background: #5592f4;
 }
