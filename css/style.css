@@ -14,3 +14,12 @@ body {
   align-items: center;
   height: 100vh;
 }
+
+.calculator{
+  background: #F8F8FF;
+  width: 100%;
+  max-width: 24em;
+  min-height: 40em;
+  border-radius: 1.5rem;
+  box-shadow: -6px 8px 9px 0px #46494C;
+}
