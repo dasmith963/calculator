@@ -21,7 +21,7 @@ body {
   background: #F8F8FF;
   width: 100%;
   max-width: 24em;
-  min-height: 40em;
+  min-height: 39em;
   border-radius: 1.5rem;
   box-shadow: -6px 8px 9px 0px #46494C;
 }
@@ -38,4 +38,23 @@ body {
 
 .main-display{
   font-size: 3rem;
+}
+
+.keypad{
+  display: grid;
+  grid-template-columns: repeat(4, 6em);
+  grid-template-rows: repeat(5, 6em);
+}
+
+button{
+  background: #f2f2f2;
+  font-size: 1.5rem;
+}
+
+button:hover{
+  background: #d2d6d7;
+}
+
+button:active{
+  transform: translateY(.8px);
 }
