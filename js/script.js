@@ -5,6 +5,7 @@ let previousNum = '';
 let currentNum = '';
 let operator = '';
 
+document.addEventListener('keydown', handleKeyboard);
 keypad.addEventListener('click', handleButtons);
 
 const operations = {
@@ -97,6 +98,26 @@ function clearDisplay() {
   subDisplay.textContent = '';
 }
 
+function checkOp(operator){
+  if (operator === '*') return 'x'
+  if (operator === '/') return '÷'
+}
+
+function handleKeyboard(event){
+  event.preventDefault();
+  let key = event.key
+
+  if (key >= 0 && key <= 9) appendNumber(key);
+  if (key === '+' || key === '-') handleOperator(key);
+  if (key === '*' || key === '/') handleOperator(checkOp(key));
+  if (key === '%') getPercentage();
+  if (key === '.') appendDecimal();
+  if (key === 'Enter' || key === '=') checkNumbers();
+  if (key === 'c') clearDisplay();
+  if (key === 'Backspace') deleteInput();
+  if (key === 'p') invertNumber();
+}
+
 function handleButtons(event) {
   let currentBtn = event.target
 
@@ -126,48 +147,3 @@ function handleButtons(event) {
   }
 }
 
-// * Add keyboard support! You might run into an issue where keys such as (/) might cause you some trouble. 
-// Read the MDN documentation for event.preventDefault to help solve this problem
-// 0-9
-// + - * /
-// %
-// .
-// 'enter' || = 
-// 'backspace'
-document.addEventListener('keydown', (event) => {
-  let key = event.key
-
-  if (key >= 0 && key <= 9) {
-    appendNumber(key);
-  }
-
-  if (key === '+' || key === '-' || key === '*' || key === '/') {
-    console.log(`this is operator: ${key}`)
-  }
-
-  if (key === '%') {
-    console.log(`this is percent: ${key}`)
-  }
-
-  if (key === '.') {
-    console.log(`this is decimal: ${key}`)
-  }
-
-  if (key === 'Enter' || key === '=') {
-    console.log(`this is equals: ${key}`)
-  }
-
-  if (key === 'c') {
-    console.log(`this is clear: ${key}`)
-  }
-
-  if (key === 'Backspace') {
-    console.log(`this is backspace: ${key}`)
-  }
-
-  if (key === 'p') {
-    console.log(`this is inverse: ${key}`)
-  }
-})
-
-  // numbers with commas
