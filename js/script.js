@@ -1,27 +1,11 @@
 const mainDisplay = document.querySelector('.main-display');
 const subDisplay = document.querySelector('.sub-display');
-const operatorBtns = document.querySelectorAll('.operator');
-const numberBtns = document.querySelectorAll('.number');
-const inverseBtn = document.querySelector('.inverse');
-const decimalBtn = document.querySelector('.decimal');
-const percentBtn = document.querySelector('.percent');
-const equalsBtn = document.querySelector('.equals');
-const deleteBtn = document.querySelector('.backspace');
-const clearBtn = document.querySelector('.clear');
+const keypad = document.querySelector('.keypad');
 let previousNum = '';
 let currentNum = '';
 let operator = '';
 
-operatorBtns.forEach(button => button.addEventListener('click', handleOperator));
-numberBtns.forEach(button => button.addEventListener('click',(e)=>{
-  appendNumber(e.target.textContent)
-}));
-decimalBtn.addEventListener('click', appendDecimal);
-inverseBtn.addEventListener('click', invertNumber);
-percentBtn.addEventListener('click', getPercentage);
-equalsBtn.addEventListener('click', checkNumbers);
-deleteBtn.addEventListener('click', deleteInput);
-clearBtn.addEventListener('click', clearDisplay);
+keypad.addEventListener('click', handleButtons);
 
 const operations = {
   add: (a, b) => a + b,
@@ -54,7 +38,7 @@ function appendDecimal() {
   mainDisplay.textContent = currentNum;
 }
 
-function invertNumber(){
+function invertNumber() {
   if (currentNum !== '') {
     currentNum = -currentNum
     mainDisplay.textContent = currentNum.toString();
@@ -73,19 +57,19 @@ function checkNumbers() {
   if (currentNum !== '' && previousNum !== '') displayResult();
 }
 
-function handleOperator(e) {
+function handleOperator(currentOperator) {
   if (previousNum === '') {
     previousNum = currentNum;
     currentNum = '';
-  } else if (operator){
-   checkNumbers();
+  } else if (operator) {
+    checkNumbers();
   }
-  operator = e.target.textContent;
+  operator = currentOperator;
   subDisplay.textContent = `${previousNum} ${operator}`;
 }
 
 function roundNumber(number) {
-  if (isNaN(number))return 'Error';
+  if (isNaN(number)) return 'Error';
   return Math.round(number * 100000) / 100000;
 }
 
@@ -113,47 +97,75 @@ function clearDisplay() {
   subDisplay.textContent = '';
 }
 
+function handleButtons(event) {
+  let currentBtn = event.target
+
+  if (currentBtn.classList.contains('number')) {
+    appendNumber(currentBtn.textContent);
+  }
+  if (currentBtn.classList.contains('decimal')) {
+    appendDecimal();
+  }
+  if (currentBtn.classList.contains('inverse')) {
+    invertNumber();
+  }
+  if (currentBtn.classList.contains('operator')) {
+    handleOperator(currentBtn.textContent);
+  }
+  if (currentBtn.classList.contains('percent')) {
+    getPercentage();
+  }
+  if (currentBtn.classList.contains('equals')) {
+    checkNumbers();
+  }
+  if (currentBtn.classList.contains('backspace')) {
+    deleteInput();
+  }
+  if (currentBtn.classList.contains('clear')) {
+    clearDisplay();
+  }
+}
+
 // * Add keyboard support! You might run into an issue where keys such as (/) might cause you some trouble. 
 // Read the MDN documentation for event.preventDefault to help solve this problem
-  // 0-9
-  // + - * /
-  // %
-  // .
-  // 'enter' || = 
-  // 'backspace'
-document.addEventListener('keydown', (event)=>{
+// 0-9
+// + - * /
+// %
+// .
+// 'enter' || = 
+// 'backspace'
+document.addEventListener('keydown', (event) => {
   let key = event.key
- 
-  if (key >= 0 && key <= 9){
+
+  if (key >= 0 && key <= 9) {
     appendNumber(key);
-    console.log(`this is number: ${key}`)
   }
 
-  if (key === '+' || key === '-'|| key === '*' || key === '/'){
+  if (key === '+' || key === '-' || key === '*' || key === '/') {
     console.log(`this is operator: ${key}`)
   }
 
-  if (key === '%'){
+  if (key === '%') {
     console.log(`this is percent: ${key}`)
   }
 
-  if(key === '.'){
+  if (key === '.') {
     console.log(`this is decimal: ${key}`)
   }
 
-  if (key === 'Enter' || key === '='){
+  if (key === 'Enter' || key === '=') {
     console.log(`this is equals: ${key}`)
   }
 
-  if (key === 'c'){
+  if (key === 'c') {
     console.log(`this is clear: ${key}`)
   }
 
-  if(key === 'Backspace'){
+  if (key === 'Backspace') {
     console.log(`this is backspace: ${key}`)
   }
 
-  if (key === 'p'){
+  if (key === 'p') {
     console.log(`this is inverse: ${key}`)
   }
 })
