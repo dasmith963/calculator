@@ -66,7 +66,9 @@ function handleOperator(currentOperator) {
     checkNumbers();
   }
   operator = currentOperator;
-  subDisplay.textContent = `${previousNum} ${operator}`;
+  previousNum === ''
+    ? subDisplay.textContent = ''
+    : subDisplay.textContent = `${previousNum} ${operator}`;
 }
 
 function roundNumber(number) {
@@ -98,12 +100,12 @@ function clearDisplay() {
   subDisplay.textContent = '';
 }
 
-function checkOp(operator){
+function checkOp(operator) {
   if (operator === '*') return 'x'
   if (operator === '/') return '÷'
 }
 
-function handleKeyboard(event){
+function handleKeyboard(event) {
   event.preventDefault();
   let key = event.key
 
