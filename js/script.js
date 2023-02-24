@@ -113,9 +113,9 @@ function handleKeyboard(event){
   if (key === '%') getPercentage();
   if (key === '.') appendDecimal();
   if (key === 'Enter' || key === '=') checkNumbers();
-  if (key === 'c') clearDisplay();
+  if (key === 'Escape') clearDisplay();
   if (key === 'Backspace') deleteInput();
-  if (key === 'p') invertNumber();
+  if (key === 'Tab') invertNumber();
 }
 
 function handleButtons(event) {
