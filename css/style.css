@@ -13,6 +13,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background: #e5d8cb;
+  color: #28282B;
 }
 
 .calculator{
@@ -26,7 +28,7 @@ body {
 
 .display{
   text-align: right;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .sub-display{
