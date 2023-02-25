@@ -76,7 +76,7 @@ function displayResult() {
   currentNum = '';
   previousNum.length <= 10
     ? mainDisplay.textContent = previousNum
-    : mainDisplay.textContent = previousNum.slice(0, 9);
+    : mainDisplay.textContent = previousNum.slice(0, 11);
 }
 
 function deleteInput() {
@@ -120,7 +120,7 @@ function handleKeyboard(event) {
   if (key === '%') getPercentage();
   if (key === '.') appendDecimal();
   if (key === 'Enter' || key === '=') checkNumbers();
-  if (key === 'Escape') clearDisplay();
+  if (key === 'Escape' || key === 'c') clearDisplay();
   if (key === 'Backspace') deleteInput();
   if (key === 'Tab') invertNumber();
 }
