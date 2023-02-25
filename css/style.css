@@ -117,7 +117,7 @@ p {
 }
 
 .btn-open {
-  background-color: #3B3B3B;
+  background: #3B3B3B;
   color: #f9fafb; 
   width: 8em;
   padding: 0.5em 1.2em;
@@ -128,6 +128,11 @@ p {
   transition: 0.3s;
   position: relative;
   top: 5%;
+}
+
+.btn-open:hover{
+  color: #3B3B3B;
+  background: #f9fafb;
 }
 
 .btn-close {
