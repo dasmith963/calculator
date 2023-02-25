@@ -34,6 +34,9 @@ body {
 .sub-display{
   font-size: 1.5rem;
   height: 2rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 
 .main-display{
