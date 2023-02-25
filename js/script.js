@@ -42,10 +42,6 @@ function appendNumber(number) {
 }
 
 function appendDecimal() {
-  if (previousNum !== ''){
-    previousNum = currentNum;
-    currentNum = '';
-  }
   if (currentNum === '') currentNum = '0';
   if (currentNum.includes('.')) return;
   currentNum += '.';
