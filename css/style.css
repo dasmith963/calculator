@@ -10,6 +10,7 @@
 body {
   font-family: 'Nunito', sans-serif;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -17,7 +18,7 @@ body {
   color: #28282B;
 }
 
-.calculator{
+.calculator {
   background: #F8F8FF;
   width: 100%;
   max-width: 24em;
@@ -26,12 +27,12 @@ body {
   box-shadow: -6px 8px 9px 0px #46494C;
 }
 
-.display{
+.display {
   text-align: right;
   padding: 1.5rem;
 }
 
-.sub-display{
+.sub-display {
   font-size: 1.5rem;
   height: 2rem;
   overflow-x: scroll;
@@ -39,52 +40,52 @@ body {
   white-space: nowrap;
 }
 
-.main-display{
+.main-display {
   font-size: 3rem;
 }
 
-.keypad{
+.keypad {
   display: grid;
   grid-template-columns: repeat(4, 6em);
   grid-template-rows: repeat(5, 6em);
 }
 
-button{
+button {
   background: #f2f2f2;
   font-size: 1.5rem;
   border: 1px solid #ddd;
 }
 
-button:hover{
+button:hover {
   background: #d2d6d7;
 }
 
-button:active{
+button:active {
   transform: translateY(.8px);
 }
 
 .clear,
-.backspace{
- color: #f64859;
+.backspace {
+  color: #f64859;
 }
 
-.operator{
+.operator {
   background: #bcbebe;
 }
 
 .operator:active,
-.operator:focus{
+.operator:focus {
   background: #e9770d;
   border: 1px solid #ddd;
   color: #fff;
 }
 
-.equals{
+.equals {
   background: #4285f4;
   color: #fff;
 }
 
-.equals:hover{
+.equals:hover {
   background: #5592f4;
 }
 
@@ -105,7 +106,7 @@ p {
   margin: 0.4rem 0 0.2rem;
 }
 
-.media{
+.media {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -115,19 +116,33 @@ p {
   font-size: 1rem;
 }
 
+.btn-open {
+  background-color: #3B3B3B;
+  color: #f9fafb; 
+  width: 8em;
+  padding: 0.5em 1.2em;
+  margin: 0.2em 0.3em;
+  border-radius: 2em;
+  font-size: 1.2rem;
+  border: 0.16em solid #3B3B3B;
+  transition: 0.3s;
+  position: relative;
+  top: 5%;
+}
+
 .btn-close {
   padding: 0.5rem 0.7rem;
   border: 0;
   background: transparent;
 }
 
-.btn-close:hover{
+.btn-close:hover {
   background: #eee;
   color: #f44268;
   border-radius: 50%;
 }
 
-.overlay{
+.overlay {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -138,4 +153,8 @@ p {
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(3px);
   z-index: 1;
+}
+
+.hidden {
+  display: none;
 }
