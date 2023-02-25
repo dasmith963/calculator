@@ -1,12 +1,18 @@
 const mainDisplay = document.querySelector('.main-display');
 const subDisplay = document.querySelector('.sub-display');
 const keypad = document.querySelector('.keypad');
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const openModalBtn = document.querySelector('.btn-open');
+const closeModalBtn = document.querySelector('.btn-close');
 let previousNum = '';
 let currentNum = '';
 let operator = '';
 
 document.addEventListener('keydown', handleKeyboard);
 keypad.addEventListener('click', handleButtons);
+openModalBtn.addEventListener ('click', openModal);
+closeModalBtn.addEventListener ('click', closeModal);
 
 const operations = {
   add: (a, b) => a + b,
@@ -154,3 +160,12 @@ function handleButtons(event) {
   }
 }
 
+function openModal(){
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+}
+
+function closeModal(){
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+}
