@@ -74,7 +74,9 @@ function displayResult() {
   subDisplay.textContent = `${previousNum} ${operator} ${currentNum} =`;
   previousNum = roundNumber(result).toString();
   currentNum = '';
-  mainDisplay.textContent = previousNum;
+  previousNum.length <= 10
+    ? mainDisplay.textContent = previousNum
+    : mainDisplay.textContent = previousNum.slice(0, 9);
 }
 
 function deleteInput() {
