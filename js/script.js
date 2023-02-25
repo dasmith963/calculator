@@ -26,10 +26,12 @@ function operate(num1, num2, operator) {
 }
 
 function appendNumber(number) {
-  currentNum === '0'
-    ? currentNum = number
-    : currentNum += number;
-  mainDisplay.textContent = currentNum;
+  if (currentNum.length <= 10) {
+    currentNum === '0'
+      ? currentNum = number
+      : currentNum += number;
+    mainDisplay.textContent = currentNum;
+  }
 }
 
 function appendDecimal() {
@@ -53,27 +55,18 @@ function getPercentage() {
   }
 }
 
-function checkNumbers() {
-  if (previousNum === 'Error') return;
-  if (currentNum !== '' && previousNum !== '') displayResult();
-}
-
 function handleOperator(currentOperator) {
   if (previousNum === '') {
     previousNum = currentNum;
     currentNum = '';
-  } else if (operator) {
+  }
+  else if (operator) {
     checkNumbers();
   }
   operator = currentOperator;
   previousNum === ''
     ? subDisplay.textContent = ''
     : subDisplay.textContent = `${previousNum} ${operator}`;
-}
-
-function roundNumber(number) {
-  if (isNaN(number)) return 'Error';
-  return Math.round(number * 100000) / 100000;
 }
 
 function displayResult() {
@@ -98,6 +91,16 @@ function clearDisplay() {
   operator = '';
   mainDisplay.textContent = '0';
   subDisplay.textContent = '';
+}
+
+function checkNumbers() {
+  if (previousNum === 'Error') return;
+  if (currentNum !== '' && previousNum !== '') displayResult();
+}
+
+function roundNumber(number) {
+  if (isNaN(number)) return 'Error';
+  return Math.round(number * 100000) / 100000;
 }
 
 function checkOp(operator) {
