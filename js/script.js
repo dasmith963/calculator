@@ -13,6 +13,7 @@ document.addEventListener('keydown', handleKeyboard);
 keypad.addEventListener('click', handleButtons);
 openModalBtn.addEventListener ('click', openModal);
 closeModalBtn.addEventListener ('click', closeModal);
+overlay.addEventListener('click', closeModal);
 
 const operations = {
   add: (a, b) => a + b,
@@ -41,6 +42,10 @@ function appendNumber(number) {
 }
 
 function appendDecimal() {
+  if (previousNum !== ''){
+    previousNum = currentNum;
+    currentNum = '';
+  }
   if (currentNum === '') currentNum = '0';
   if (currentNum.includes('.')) return;
   currentNum += '.';
