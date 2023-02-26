@@ -13,7 +13,7 @@ Use the keyboard to enter numbers or make calculations.
 
 ### Screenshot
 
-./calculator.png
+![Screenshot](./docs/calculator.png)
 
 ### Links
 
