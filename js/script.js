@@ -5,14 +5,15 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const openModalBtn = document.querySelector('.btn-open');
 const closeModalBtn = document.querySelector('.btn-close');
+let isResultDisplayed = false;
 let previousNum = '';
 let currentNum = '';
 let operator = '';
 
 document.addEventListener('keydown', handleKeyboard);
 keypad.addEventListener('click', handleButtons);
-openModalBtn.addEventListener ('click', openModal);
-closeModalBtn.addEventListener ('click', closeModal);
+openModalBtn.addEventListener('click', openModal);
+closeModalBtn.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 
 const operations = {
@@ -33,6 +34,10 @@ function operate(num1, num2, operator) {
 }
 
 function appendNumber(number) {
+  if (isResultDisplayed) {
+    isResultDisplayed = false;
+    previousNum = '';
+}
   if (currentNum.length <= 10) {
     currentNum === '0'
       ? currentNum = number
@@ -70,6 +75,7 @@ function handleOperator(currentOperator) {
   else if (operator) {
     checkNumbers();
   }
+  isResultDisplayed = false;
   operator = currentOperator;
   previousNum === ''
     ? subDisplay.textContent = ''
@@ -84,6 +90,7 @@ function displayResult() {
   previousNum.length <= 10
     ? mainDisplay.textContent = previousNum
     : mainDisplay.textContent = previousNum.slice(0, 11);
+    isResultDisplayed = true;
 }
 
 function deleteInput() {
@@ -161,12 +168,12 @@ function handleButtons(event) {
   }
 }
 
-function openModal(){
+function openModal() {
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
 }
 
-function closeModal(){
+function closeModal() {
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
 }
