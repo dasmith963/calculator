@@ -37,6 +37,7 @@ function appendNumber(number) {
   if (isResultDisplayed) {
     isResultDisplayed = false;
     previousNum = '';
+    subDisplay.textContent = '';
 }
   if (currentNum.length <= 10) {
     currentNum === '0'
